@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="0dp"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp"
+    android:background="#999999"
+    tools:context="com.tanujyadav.proxy_lock.MainActivity">
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:src="@drawable/back"/>
+
+<LinearLayout
+    android:id="@+id/ll"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_centerVertical="true"
+    android:paddingTop="0dp"
+    android:layout_below="@+id/img">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <Button
+            android:id="@+id/a"
+            android:layout_width="@dimen/bsize"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="@dimen/bsize"
+            android:background="@drawable/on"
+            android:visibility="gone"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/b"
+            android:layout_width="@dimen/bsize"
+            android:textAlignment="gravity"
+            android:gravity="center"
+            android:background="@drawable/off"
+            android:visibility="visible"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="@dimen/bsize"/>
+
+
+    </FrameLayout>
+
+
+</LinearLayout>
+
+
+
+    <TextView
+        android:id="@+id/ll1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_alignParentBottom="true"
+        android:text="@string/about"
+        android:textColor="#ffdc73"
+        android:textAlignment="center"
+        android:layout_marginBottom="@dimen/kmar"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:paddingBottom="@dimen/kkmar"
+        android:layout_marginLeft="@dimen/kmar"
+        android:layout_marginRight="@dimen/kmar"
+        android:layout_above="@id/ll1"
+        android:textSize="@dimen/htxt"
+        android:text="@string/how"
+        android:textColor="#adff00"
+        android:textAlignment="center"/>
+</RelativeLayout>
