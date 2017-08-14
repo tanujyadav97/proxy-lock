@@ -13,6 +13,8 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -32,6 +34,31 @@ import static android.os.SystemClock.uptimeMillis;
         public static SharedPreferences.Editor pe;
         private static final int TIME_DELAY = 2000;
         private static long back_pressed;
+        Menu menuu;
+
+
+        @Override
+        public boolean onOptionsItemSelected(MenuItem item) {
+            int id = item.getItemId();
+             if (id == R.id.search) {
+
+                 Intent in=new Intent(MainActivity.this,setting.class);
+                 startActivity(in);
+                return true;
+            }
+
+            return super.onOptionsItemSelected(item);
+        }
+
+
+
+        @Override
+        public boolean onCreateOptionsMenu(Menu menu) {
+            // Inflate the menu; this adds items to the action bar if it is present.
+            getMenuInflater().inflate(R.menu.menu, menu);
+            this.menuu=menu;
+            return true;
+        }
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {

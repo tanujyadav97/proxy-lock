@@ -1,6 +1,7 @@
 package com.tanujyadav.proxy_lock;
 
 
+import android.app.Activity;
 import android.app.Service;
 import android.app.admin.DevicePolicyManager;
 import android.content.Context;
@@ -14,6 +15,7 @@ import android.os.IBinder;
 import android.os.PowerManager;
 import android.widget.Toast;
 
+import static android.content.res.Configuration.ORIENTATION_LANDSCAPE;
 import static android.os.SystemClock.uptimeMillis;
 
 
@@ -53,33 +55,33 @@ public class MyService extends Service implements SensorEventListener {
 
     @Override
     public void onSensorChanged(SensorEvent event) {
+        if (MainActivity.ps.getString("blkland", "n/a").equals("1")&& (getResources().getConfiguration().orientation)==ORIENTATION_LANDSCAPE ){
+        }
+
+        else{
         if (event.values[0] == 0) {
-         //   Toast.makeText(this, "near", Toast.LENGTH_LONG).show();
+            //   Toast.makeText(this, "near", Toast.LENGTH_LONG).show();
             a = uptimeMillis();
         } else {
 
-            if (uptimeMillis() - a < 1000) {
+            int delay=MainActivity.ps.getInt("delay",0);
+            if ((uptimeMillis() - a < delay+3000)&&(uptimeMillis() - a > delay)) {
                 PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-                boolean f=false;
+                boolean f = false;
 
                 if (Build.VERSION.SDK_INT >= 20) {
                     if (pm.isInteractive()) {
-                        f=true;
+                        f = true;
                     }
-                }
-                else if(Build.VERSION.SDK_INT < 20){
-                    if(pm.isScreenOn()){
-                        f=true;
+                } else if (Build.VERSION.SDK_INT < 20) {
+                    if (pm.isScreenOn()) {
+                        f = true;
                     }
                 }
 
-                if(f)
-                {
+                if (f) {
                     mDPM.lockNow();
-                }
-
-                else
-                {
+                } else {
                     PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK
                             | PowerManager.ACQUIRE_CAUSES_WAKEUP, "CHESS");
                     wl.acquire();
@@ -96,6 +98,7 @@ public class MyService extends Service implements SensorEventListener {
 
             }
         }
+      }
     }
     @Override
     public void onDestroy() {

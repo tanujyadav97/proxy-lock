@@ -4,4 +4,16 @@
     <string name="btxt2"> Stop\nService</string>
     <string name="how">Just swipe your hand over the proximity sensor to turn screen ON/OFF</string>
     <string name="about">The App has been developed by Tanuj Yadav,\nmember of the HackSlash team.\nContact- hackslash00@gmail.com</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <array name="type">
+        <item>0 sec</item>
+        <item>0.3 sec</item>
+        <item>0.5 sec</item>
+        <item>0.8 sec</item>
+        <item>1.0 sec</item>
+        <item>1.5 sec</item>
+        <item>2.0 sec</item>
+        <item>3.0 sec</item>
+    </array>
 </resources>
